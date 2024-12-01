@@ -58,7 +58,7 @@
             "npx concurrently -c \"#93c5fd,#c4b5fd,#fb7185,#fdba74\" \"php artisan serve\" \"php artisan queue:listen --tries=1\" \"php artisan pail --timeout=0\" \"npm run dev\" --names=server,queue,logs,vite"
         ],
         "sail-test:lint": "sail bin pint --test --ansi",
-        "sail-test:types": "sail bin phpstan analyse --error-format=blade --ansi",
+        "sail-test:types": "sail bin phpstan analyse --ansi",
         "sail-test:arch": "sail pest --filter=arch --colors=always",
         "sail-test:type-coverage": "sail pest --type-coverage --min=100 --colors=always",
         "sail-test:coverage": "sail pest --parallel --min=100 --coverage --colors=always",
