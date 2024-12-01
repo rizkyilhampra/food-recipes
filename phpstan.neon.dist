@@ -1,0 +1,20 @@
+includes:
+    - vendor/larastan/larastan/extension.neon
+    - vendor/phpstan/phpstan/conf/bleedingEdge.neon
+    - vendor/tomasvotruba/bladestan/config/extension.neon
+    - vendor/nesbot/carbon/extension.neon
+parameters:
+    level: max
+    checkMissingIterableValueType: true
+    bladestan:
+        template_paths:
+            - resources/views
+    excludePaths:
+        - bootstrap/cache
+    paths:
+        - app/
+        - config
+        - bootstrap
+        - database/factories
+        - database/seeders
+        - routes
