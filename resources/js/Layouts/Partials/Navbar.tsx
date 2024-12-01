@@ -15,30 +15,6 @@ const navigations = [
     name: 'About',
     textValue: 'About',
     href: '/about'
-  },
-  {
-    name: 'Github',
-    textValue: 'Github Repository',
-    href: 'https://github.com/irsyadadl/inertia.ts',
-    className: 'justify-between'
-  },
-  {
-    name: 'Components',
-    textValue: 'Just D. Components',
-    href: 'https://getjustd.com',
-    className: 'justify-between'
-  },
-  {
-    name: 'Colors',
-    textValue: 'Just D. Colors',
-    href: 'https://getjustd.com/colors',
-    className: 'justify-between'
-  },
-  {
-    name: 'Templates',
-    textValue: 'Next.js Template',
-    href: 'https://irsyad.co/s',
-    className: 'justify-between'
   }
 ];
 
