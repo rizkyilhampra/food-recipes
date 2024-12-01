@@ -36,6 +36,7 @@ arch('avoid inheritance')
         'App\Providers',
         'App\View',
         'App\Http\Middleware',
+        'App\Data',
     ]);
 
 arch('annotations')
