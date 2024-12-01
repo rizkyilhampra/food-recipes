@@ -35,6 +35,7 @@ arch('avoid inheritance')
         'App\Notifications',
         'App\Providers',
         'App\View',
+        'App\Http\Middleware',
     ]);
 
 arch('annotations')
