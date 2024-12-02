@@ -1,15 +1,5 @@
-export type AuthData = {
-  user: AuthenticatedUserData;
-};
-
-export type AuthenticatedUserData = {
+export type UserData = {
   id: number;
-  email: string;
   name: string;
-  gravatar: string;
-  email_verified_at: string | null;
-};
-
-export type PagePropsData = {
-  auth: AuthData;
+  email: string;
 };
