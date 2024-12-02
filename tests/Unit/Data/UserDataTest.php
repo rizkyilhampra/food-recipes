@@ -5,9 +5,9 @@ use App\Data\UserData;
 
 it('have defined properties', function () {
     $data = [
+        'id' => 1,
         'name' => 'rizky ilham',
         'email' => 'rizyilhampra@gmail.com',
-        'password' => 'password',
     ];
 
     $userData = UserData::from($data);
