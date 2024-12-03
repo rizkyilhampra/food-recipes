@@ -1,4 +1,4 @@
-import { AppLayout } from '@/Layouts/AppLayout';
+import { AppLayout } from '@/layouts/app-layout';
 import { Head } from '@inertiajs/react';
 import { Header } from 'components/header';
 import { Logo } from 'components/logo';

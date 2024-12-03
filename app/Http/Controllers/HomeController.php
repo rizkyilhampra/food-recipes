@@ -15,6 +15,6 @@ final class HomeController
      */
     public function __invoke(Request $request): Response|ResponseFactory
     {
-        return inertia('Home');
+        return inertia('home');
     }
 }

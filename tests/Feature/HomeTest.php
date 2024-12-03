@@ -11,5 +11,5 @@ it('can access homepage', function () {
 
     $response->assertStatus(200)
         ->assertInertia(fn (AssertableInertia $page) => $page
-            ->component('Home'));
+            ->component('home'));
 });

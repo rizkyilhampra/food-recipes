@@ -8,7 +8,7 @@ import { Providers } from './components/providers';
 
 createInertiaApp({
   resolve: (name) =>
-    resolvePageComponent(`./Pages/${name}.tsx`, import.meta.glob('./Pages/**/*.tsx')),
+    resolvePageComponent(`./Pages/${name}.tsx`, import.meta.glob('./pages/**/*.tsx')),
   setup({ el, App, props }) {
     createRoot(el).render(
       <Providers>

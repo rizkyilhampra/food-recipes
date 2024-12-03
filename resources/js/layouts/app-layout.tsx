@@ -1,5 +1,5 @@
 import { Footer } from '@/components/footer';
-import { AppNavbar } from '@/Layouts/Partials/Navbar';
+import { AppNavbar } from '@/layouts/partials/navbar';
 import { PropsWithChildren } from 'react';
 
 export function AppLayout({ children }: PropsWithChildren) {
