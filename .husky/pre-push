@@ -1,1 +1,2 @@
 composer run sail-test
+bun run test
