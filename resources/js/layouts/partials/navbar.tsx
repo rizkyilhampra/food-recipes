@@ -1,9 +1,8 @@
-import { PagePropsData } from '@/types';
 import { usePage } from '@inertiajs/react';
 import { ThemeSwitcher } from 'components/theme-switcher';
-import { IconBrandLaravel, IconChevronDown } from 'justd-icons';
+import { IconBrandLaravel } from 'justd-icons';
 import React from 'react';
-import { Button, Menu, Navbar, Separator } from 'ui';
+import { Navbar, Separator } from 'ui';
 
 const navigations = [
   {
@@ -20,7 +19,6 @@ const navigations = [
 
 export function AppNavbar({ children, ...props }: React.ComponentProps<typeof Navbar>) {
   const page = usePage();
-  const { auth } = usePage<PagePropsData>().props;
   const [isOpen, setIsOpen] = React.useState(false);
   React.useEffect(() => setIsOpen(false), [page.url]);
   return (
@@ -56,20 +54,5 @@ export function AppNavbar({ children, ...props }: React.ComponentProps<typeof Na
 
       {children}
     </Navbar>
-  );
-}
-
-function LoginMenu() {
-  return (
-    <Menu>
-      <Button size="small" appearance="outline">
-        Login
-        <IconChevronDown className="ml-2" />
-      </Button>
-      <Menu.Content showArrow placement="bottom end" className="sm:min-w-40">
-        <Menu.Item href={route('login')}>Login</Menu.Item>
-        <Menu.Item href={route('register')}>Register</Menu.Item>
-      </Menu.Content>
-    </Menu>
   );
 }

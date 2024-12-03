@@ -9,7 +9,7 @@ use function Pest\Laravel\get;
 it('can access homepage', function () {
     $response = get('/');
 
-    $response->assertInertia(function(AssertableInertia $page) {
+    $response->assertInertia(function (AssertableInertia $page) {
         $page->component('home', true);
     });
 });
