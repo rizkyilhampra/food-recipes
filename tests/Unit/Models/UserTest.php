@@ -32,3 +32,9 @@ it('user model has correct casts properties', function () {
         'password' => 'hashed',
     ], $user->getCasts());
 });
+
+it('has correct mutate attribute', function () {
+    $user = new App\Models\User();
+
+    expect($user->getMutatedAttributes())->toBe(['avatar']);
+});
