@@ -1,26 +1,24 @@
-import { usePage } from '@inertiajs/react';
+import { UserData } from '@/types';
+import { Link, usePage } from '@inertiajs/react';
 import { ThemeSwitcher } from 'components/theme-switcher';
 import { IconBrandLaravel } from 'justd-icons';
 import React from 'react';
-import { Navbar, Separator } from 'ui';
+import { buttonStyles, Navbar, Separator } from 'ui';
 
 const navigations = [
   {
     name: 'Home',
     textValue: 'Home',
     href: '/'
-  },
-  {
-    name: 'About',
-    textValue: 'About',
-    href: '/about'
   }
 ];
 
 export function AppNavbar({ children, ...props }: React.ComponentProps<typeof Navbar>) {
   const page = usePage();
+  const { user } = usePage<UserData>().props;
   const [isOpen, setIsOpen] = React.useState(false);
   React.useEffect(() => setIsOpen(false), [page.url]);
+
   return (
     <Navbar isOpen={isOpen} onOpenChange={setIsOpen} {...props}>
       <Navbar.Nav>
@@ -36,6 +34,7 @@ export function AppNavbar({ children, ...props }: React.ComponentProps<typeof Na
         </Navbar.Section>
         <Navbar.Section className="hidden ml-auto gap-x-1 lg:flex">
           <ThemeSwitcher />
+          <LoginButton />
         </Navbar.Section>
       </Navbar.Nav>
 
@@ -49,10 +48,19 @@ export function AppNavbar({ children, ...props }: React.ComponentProps<typeof Na
         </Navbar.Flex>
         <Navbar.Flex className="gap-x-1">
           <ThemeSwitcher />
+          <LoginButton />
         </Navbar.Flex>
       </Navbar.Compact>
 
       {children}
     </Navbar>
+  );
+}
+
+function LoginButton() {
+  return (
+    <Link href={route('login')} className={buttonStyles({ appearance: 'outline', size: 'small' })}>
+      Login
+    </Link>
   );
 }

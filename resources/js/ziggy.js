@@ -1,9 +1,10 @@
 const Ziggy = {
-  url: 'http:\/\/localhost',
-  port: null,
+  url: 'http:\/\/localhost:82',
+  port: 82,
   defaults: {},
   routes: {
     home: { uri: '\/', methods: ['GET', 'HEAD'] },
+    login: { uri: 'login', methods: ['GET', 'HEAD'] },
     'storage.local': {
       uri: 'storage\/{path}',
       methods: ['GET', 'HEAD'],
