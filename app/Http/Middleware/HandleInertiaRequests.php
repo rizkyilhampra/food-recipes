@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Http\Middleware;
 
+use App\Data\UserData;
 use Illuminate\Http\Request;
 use Inertia\Middleware;
 
@@ -38,7 +39,15 @@ final class HandleInertiaRequests extends Middleware
     public function share(Request $request): array
     {
         return array_merge(parent::share($request), [
-            //
+            'user' => $request->user() ? UserData::from($request->user()) : null,
+            'ziggy' => fn () => [
+                'location' => $request->url(),
+                'query' => $request->query(),
+            ],
+            'flash_message' => fn () => [
+                'type' => $request->session()->get('type') ?? 'success',
+                'message' => $request->session()->get('message'),
+            ],
         ]);
     }
 }
