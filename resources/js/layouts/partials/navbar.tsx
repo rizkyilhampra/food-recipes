@@ -2,7 +2,7 @@ import { useTheme } from '@/components/theme-provider';
 import { AuthData } from '@/types';
 import { Link, usePage } from '@inertiajs/react';
 import { ThemeSwitcher } from 'components/theme-switcher';
-import { IconBrandJustd, IconBrandLaravel, IconColorSwatch, IconSettings } from 'justd-icons';
+import { IconBrandLaravel } from 'justd-icons';
 import React from 'react';
 import { Selection } from 'react-aria-components';
 import { Avatar, buttonStyles, Menu, Navbar, Separator } from 'ui';
@@ -86,11 +86,6 @@ function UserMenu() {
             </div>
           </Menu.Header>
         </Menu.Section>
-        <Menu.Item href={route('dashboard')}>Dashboard</Menu.Item>
-        <Menu.Item href={route('profile.edit')} className="justify-between">
-          Settings
-          <IconSettings />
-        </Menu.Item>
         <Menu.Submenu>
           <Menu.Item>Preferences</Menu.Item>
           <Menu.Content
@@ -114,21 +109,7 @@ function UserMenu() {
             )}
           </Menu.Content>
         </Menu.Submenu>
-        <Menu.Separator />
-        <Menu.Item target="_blank" href="https://laravel.com" className="justify-between">
-          Documentation
-          <IconBrandLaravel />
-        </Menu.Item>
-        <Menu.Item target="_blank" href="https://getjustd.com" className="justify-between">
-          Components
-          <IconBrandJustd />
-        </Menu.Item>
-        <Menu.Item target="_blank" href="https://getjustd.com/colors" className="justify-between">
-          Colors
-          <IconColorSwatch />
-        </Menu.Item>
-        <Menu.Separator />
-        <Menu.Item routerOptions={{ method: 'post' }} href={route('logout')}>
+        <Menu.Item routerOptions={{ method: 'delete' }} href={route('logout')}>
           <span>Logout</span>
         </Menu.Item>
       </Menu.Content>

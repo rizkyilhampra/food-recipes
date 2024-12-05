@@ -5,12 +5,8 @@ const Ziggy = {
   routes: {
     home: { uri: '\/', methods: ['GET', 'HEAD'] },
     login: { uri: 'login', methods: ['GET', 'HEAD'] },
-    'storage.local': {
-      uri: 'storage\/{path}',
-      methods: ['GET', 'HEAD'],
-      wheres: { path: '.*' },
-      parameters: ['path']
-    }
+    'login.google': { uri: 'login\/google', methods: ['GET', 'HEAD'] },
+    logout: { uri: 'logout', methods: ['DELETE'] }
   }
 };
 if (typeof window !== 'undefined' && typeof window.Ziggy !== 'undefined') {
