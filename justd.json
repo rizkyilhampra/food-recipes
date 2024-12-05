@@ -2,7 +2,7 @@
   "$schema": "https://getjustd.com",
   "ui": "resources/js/components/ui",
   "classes": "resources/js/utils",
-  "theme": "Default",
+  "theme": "Neutral",
   "css": "resources/css/app.css",
   "alias": "@"
 }
