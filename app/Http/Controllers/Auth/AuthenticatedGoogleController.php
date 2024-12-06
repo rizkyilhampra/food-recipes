@@ -14,6 +14,9 @@ use Laravel\Socialite\Facades\Socialite;
 
 final class AuthenticatedGoogleController
 {
+    /**
+     * Display the login view.
+     */
     public function index(): Response|ResponseFactory
     {
         return inertia('auth/login', [
@@ -21,12 +24,18 @@ final class AuthenticatedGoogleController
         ]);
     }
 
-    public function create(): RedirectResponse
+    /**
+     * Redirect the user to the Google authentication page.
+     */
+    public function create(): \Symfony\Component\HttpFoundation\RedirectResponse
     {
         return Socialite::driver('google')->redirect();
     }
 
-    public function store()
+    /**
+     * Obtain the user information from Google.
+     */
+    public function store(): RedirectResponse
     {
         try {
             $googleUser = Socialite::driver('google')->user();
@@ -51,6 +60,9 @@ final class AuthenticatedGoogleController
         return redirect()->intended(route('home', absolute: false));
     }
 
+    /**
+     * Log the user out of the application.
+     */
     public function destroy(): RedirectResponse
     {
         auth('web')->logout();
