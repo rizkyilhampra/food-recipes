@@ -1,4 +1,4 @@
-import { Head, Link } from '@inertiajs/react';
+import { Head } from '@inertiajs/react';
 import { IconBrandGoogle } from 'justd-icons';
 import { GuestLayout } from 'layouts';
 import React from 'react';
@@ -17,15 +17,14 @@ export default function Login(args: LoginProps) {
       {status && (
         <div className="mb-4 text-sm font-medium text-red-600 dark:text-red-400">{status}</div>
       )}
-      <Link
-        as="a"
+      <a
         href={route('login.google')}
         target="_self"
         className={buttonStyles({ intent: 'primary', className: 'w-full flex justify-center' })}
       >
         <IconBrandGoogle />
         <span>Continue with Google</span>
-      </Link>
+      </a>
     </>
   );
 }
