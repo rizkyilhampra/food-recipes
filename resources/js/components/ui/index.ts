@@ -17,3 +17,4 @@ export * from './text-field';
 export * from './visually-hidden';
 export * from './checkbox';
 export * from './form';
+export * from './table';
