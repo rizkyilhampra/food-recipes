@@ -6,6 +6,7 @@ const Ziggy = {
     home: { uri: '\/', methods: ['GET', 'HEAD'] },
     login: { uri: 'login', methods: ['GET', 'HEAD'] },
     'login.google': { uri: 'login\/google', methods: ['GET', 'HEAD'] },
+    'login.google.callback': { uri: 'auth\/google\/callback', methods: ['GET', 'HEAD'] },
     logout: { uri: 'logout', methods: ['DELETE'] }
   }
 };

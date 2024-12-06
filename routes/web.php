@@ -13,7 +13,8 @@ Route::middleware('guest')->group(function () {
         ->name('login');
     Route::get('/login/google', [AuthenticatedGoogleController::class, 'create'])
         ->name('login.google');
-    Route::get('/auth/google/callback', [AuthenticatedGoogleController::class, 'store']);
+    Route::get('/auth/google/callback', [AuthenticatedGoogleController::class, 'store'])
+        ->name('login.google.callback');
 });
 
 Route::middleware(['auth', 'verified'])->group(function () {
