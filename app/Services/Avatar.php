@@ -21,7 +21,7 @@ final readonly class Avatar
     public function url(int $size = 200): string
     {
         $gravatarHash = hash('sha256', mb_strtolower($this->user->email));
-        $gravatarUrl = "https://gravatar.com/avatar/{$gravatarHash}?s={$size}&d=monsterid";
+        $gravatarUrl = "https://gravatar.com/avatar/{$gravatarHash}?s={$size}&d=mp";
 
         return $gravatarUrl;
     }
