@@ -80,7 +80,9 @@ const renderListItem = (
     className?: string
   },
   children: React.ReactNode
-) => <ListBoxItem {...props}>{children}</ListBoxItem>
+) => <ListBoxItem
+    routerOptions={{preserveScroll: true, ...props.routerOptions}}
+    {...props}>{children}</ListBoxItem>
 
 interface PaginationItemProps extends ListBoxItemProps {
   children?: React.ReactNode
