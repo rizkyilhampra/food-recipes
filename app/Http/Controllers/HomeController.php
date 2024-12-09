@@ -23,7 +23,7 @@ final class HomeController
         /** @var string $sort */
         $sort = $request->input('sort', '');
         /** @var string $order */
-        $order = $request->input('order', 'descending') === 'ascending' ? 'asc' : 'desc';
+        $order = $request->input('order', 'ascending') === 'ascending' ? 'asc' : 'desc';
 
         $users = User::query()
             ->when($search, fn (Builder $query) => $query->where('name', 'like', "%{$search}%"))
@@ -35,7 +35,7 @@ final class HomeController
             'users' => new UserCollection($users),
             'search' => $search,
             'sort' => $sort,
-            'order' => $request->input('order', 'descending'),
+            'order' => $request->input('order', 'ascending'),
         ]);
     }
 }
