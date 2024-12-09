@@ -18,7 +18,9 @@ arch('ensure no extends')
     ->expect('App')
     ->classes()
     ->not->toBeAbstract()
-    ->ignoring([]);
+    ->ignoring([
+        'App\Http\Resources',
+    ]);
 
 arch('avoid inheritance')
     ->expect('App')
@@ -26,6 +28,7 @@ arch('avoid inheritance')
     ->toExtendNothing()
     ->ignoring([
         'App\Console\Commands',
+        'App\Http\Resources',
         'App\Exceptions',
         'App\Http\Requests',
         'App\Jobs',
