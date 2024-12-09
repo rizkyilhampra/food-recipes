@@ -4,6 +4,7 @@ import { Head, router, usePage } from '@inertiajs/react';
 import { Header } from 'components/header';
 import { IconDotsVertical, IconLoader } from 'justd-icons';
 import { useState } from 'react';
+import { SortDescriptor } from 'react-aria-components';
 import { Card, Container, Menu, Pagination, SearchField, Table } from 'ui';
 
 interface Links {
@@ -15,12 +16,7 @@ interface Links {
 
 interface Meta {
   current_page: number;
-  from: number;
   last_page: number;
-  links: Array<object>;
-  path: string;
-  per_page: number;
-  to: number;
   total: number;
 }
 
@@ -33,22 +29,34 @@ interface UsersProps {
 type PageProps = {
   users: UsersProps;
   search: string;
+  sort: string;
+  order: 'ascending' | 'descending';
 };
 
-export default function Home() {
-  const { data: users, meta, links } = usePage<PageProps>().props.users;
-  const [search, setSearch] = useState(usePage<PageProps>().props.search || '');
+const Home = () => {
+  const { users, search: initialSearch, sort, order } = usePage<PageProps>().props;
+  const [search, setSearch] = useState(initialSearch);
+  const [sortDescriptor, setSortDescriptor] = useState<SortDescriptor>({
+    column: sort,
+    direction: order
+  });
+
+  const updateRoute = (params: Record<string, string>) => {
+    router.get(route('home'), params, { preserveState: true, replace: true });
+  };
 
   const handleSearch = (value: string) => {
     setSearch(value);
-    router.get(
-      route('home'),
-      { search: value },
-      {
-        preserveState: true,
-        replace: true
-      }
-    );
+    updateRoute({
+      search: value,
+      sort: String(sortDescriptor.column),
+      order: sortDescriptor.direction
+    });
+  };
+
+  const handleSortChange = (descriptor: SortDescriptor) => {
+    setSortDescriptor(descriptor);
+    updateRoute({ sort: String(descriptor.column), order: descriptor.direction, search });
   };
 
   return (
@@ -65,9 +73,9 @@ export default function Home() {
           value={search}
         />
         <Card>
-          <Table aria-label="Movies">
+          <Table aria-label="Users" sortDescriptor={sortDescriptor} onSortChange={handleSortChange}>
             <Table.Header>
-              <Table.Column id="name" isRowHeader>
+              <Table.Column id="name" isRowHeader allowsSorting>
                 Name
               </Table.Column>
               <Table.Column id="email" isRowHeader>
@@ -76,7 +84,7 @@ export default function Home() {
               <Table.Column />
             </Table.Header>
             <Table.Body
-              items={users}
+              items={users.data}
               renderEmptyState={() => (
                 <div className="grid place-content-center p-10">
                   <IconLoader className="animate-spin" />
@@ -109,30 +117,32 @@ export default function Home() {
         </Card>
         <Pagination className="mt-6">
           <Pagination.List>
-            <Pagination.Item variant="first" href={links.first} />
+            <Pagination.Item variant="first" href={users.links.first} />
             <Pagination.Item
               variant="previous"
-              href={links.prev}
-              isDisabled={meta.current_page === 1}
+              href={users.links.prev}
+              isDisabled={users.meta.current_page === 1}
             />
             <Pagination.Section aria-label="Pagination Segment" className="rounded-lg border">
-              <Pagination.Item variant="label">{meta.current_page}</Pagination.Item>
+              <Pagination.Item variant="label">{users.meta.current_page}</Pagination.Item>
               <Pagination.Item variant="separator" />
               <Pagination.Item className="text-muted-fg" variant="label">
-                {meta.last_page}
+                {users.meta.last_page}
               </Pagination.Item>
             </Pagination.Section>
             <Pagination.Item
               variant="next"
-              href={links.next}
-              isDisabled={meta.current_page === meta.last_page}
+              href={users.links.next}
+              isDisabled={users.meta.current_page === users.meta.last_page}
             />
-            <Pagination.Item variant="last" href={links.last} />
+            <Pagination.Item variant="last" href={users.links.last} />
           </Pagination.List>
         </Pagination>
       </Container>
     </>
   );
-}
+};
 
-Home.layout = (page: any) => <AppLayout children={page} />;
+Home.layout = (page: any) => <AppLayout>{page}</AppLayout>;
+
+export default Home;

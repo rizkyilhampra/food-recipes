@@ -18,19 +18,24 @@ final class HomeController
      */
     public function __invoke(Request $request): Response|ResponseFactory
     {
+        /** @var string $search */
+        $search = $request->input('search', '');
+        /** @var string $sort */
+        $sort = $request->input('sort', '');
+        /** @var string $order */
+        $order = $request->input('order', 'descending') === 'ascending' ? 'asc' : 'desc';
+
         $users = User::query()
-            ->when($request->has('search'), function (Builder $query) use ($request) {
-                /** @var string $search */
-                $search = $request->input('search');
-                $query->where('name', 'like', '%'.$search.'%');
-            })
-            ->latest()
+            ->when($search, fn (Builder $query) => $query->where('name', 'like', "%{$search}%"))
+            ->when($sort, fn (Builder $query) => $query->orderBy($sort, $order), fn (Builder $query) => $query->latest())
             ->paginate(5)
-            ->appends($request->only('search'));
+            ->appends($request->only('search', 'sort', 'order'));
 
         return inertia('home', [
             'users' => new UserCollection($users),
-            'search' => $request->input('search'),
+            'search' => $search,
+            'sort' => $sort,
+            'order' => $order,
         ]);
     }
 }
