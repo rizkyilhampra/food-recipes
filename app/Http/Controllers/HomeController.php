@@ -35,7 +35,7 @@ final class HomeController
             'users' => new UserCollection($users),
             'search' => $search,
             'sort' => $sort,
-            'order' => $order,
+            'order' => $request->input('order', 'descending'),
         ]);
     }
 }
