@@ -19,7 +19,7 @@ final class AuthenticatedGoogleController
      */
     public function index(): Response|ResponseFactory
     {
-        return inertia('auth/login', [
+        return inertia('Auth/Login', [
             'status' => session('status'),
         ]);
     }

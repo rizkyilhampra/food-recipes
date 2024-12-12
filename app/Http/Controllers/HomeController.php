@@ -31,7 +31,7 @@ final class HomeController
             ->paginate(5)
             ->appends($request->only('search', 'sort', 'order'));
 
-        return inertia('home', [
+        return inertia('Home', [
             'users' => new UserCollection($users),
             'search' => $search,
             'sort' => $sort,

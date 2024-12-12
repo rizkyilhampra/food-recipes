@@ -10,7 +10,7 @@ import { Providers } from './components/providers';
 
 createInertiaApp({
   resolve: (name) =>
-    resolvePageComponent(`./pages/${name}.tsx`, import.meta.glob('./pages/**/*.tsx')),
+    resolvePageComponent(`./Pages/${name}.tsx`, import.meta.glob('./Pages/**/*.tsx')),
   setup({ el, App, props }) {
     window.route = useRoute(Ziggy as Config);
     createRoot(el).render(

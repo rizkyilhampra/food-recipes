@@ -1,7 +1,7 @@
-import { AppLayout } from '@/layouts/app-layout';
+import { AppLayout } from 'layouts';
 import { UserData } from '@/types';
 import { Head, router, usePage } from '@inertiajs/react';
-import { Header } from 'components/header';
+import { Header } from '@/Layouts/Partials/Header';
 import { IconDotsVertical, IconLoader } from 'justd-icons';
 import { useState } from 'react';
 import { SortDescriptor } from 'react-aria-components';

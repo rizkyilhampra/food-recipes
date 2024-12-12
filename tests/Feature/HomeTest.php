@@ -11,7 +11,7 @@ it('can access homepage', function () {
     $response = get('/');
 
     $response->assertInertia(function (AssertableInertia $page) {
-        $page->component('home')
+        $page->component('Home')
             ->hasAll([
                 'users.data',
                 'users.links',
@@ -29,7 +29,7 @@ it('can search for users', function () {
     $response = getJson('/?search=John');
 
     $response->assertInertia(function (AssertableInertia $page) {
-        $page->component('home')
+        $page->component('Home')
             ->has('users.data', 1, function (AssertableInertia $page) {
                 $page->hasAll(['id', 'name', 'email', 'avatar'])
                     ->where('name', 'John Doe');
@@ -43,7 +43,7 @@ it('paginates users correctly', function () {
     $response = get('/');
 
     $response->assertInertia(function (AssertableInertia $page) {
-        $page->component('home')
+        $page->component('Home')
             ->has('users.data', 5)
             ->has('users.meta')
             ->has('users.links');
