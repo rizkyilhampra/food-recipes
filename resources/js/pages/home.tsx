@@ -143,6 +143,6 @@ const Home = () => {
   );
 };
 
-Home.layout = (page: any) => <AppLayout>{page}</AppLayout>;
+Home.layout = (page: React.ReactNode) => <AppLayout>{page}</AppLayout>;
 
 export default Home;

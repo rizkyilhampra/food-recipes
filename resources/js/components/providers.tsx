@@ -5,7 +5,7 @@ import { ThemeProvider } from './theme-provider';
 
 export function Providers({ children }: { children: React.ReactNode }) {
   return (
-    <RouterProvider navigate={(to, options) => router.visit(to, options as any)}>
+    <RouterProvider navigate={(to, options) => router.visit(to, options)}>
       <ThemeProvider defaultTheme="system" storageKey="ui-theme">
         {children}
       </ThemeProvider>

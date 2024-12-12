@@ -92,9 +92,13 @@ function UserMenu() {
             selectionMode="single"
             selectedKeys={selectedTheme}
             onSelectionChange={(keys) => {
-              setSelectedTheme(keys);
-              // @ts-ignore
-              setTheme(keys.has('system') ? 'system' : keys.has('dark') ? 'dark' : 'light');
+              if (keys !== 'all') {
+                setSelectedTheme(keys);
+                setTheme(keys.has('system') ? 'system' : keys.has('dark') ? 'dark' : 'light');
+              } else {
+                setSelectedTheme(new Set(['system']));
+                setTheme('system');
+              }
             }}
             items={[
               { name: 'Light', value: 'light' },
