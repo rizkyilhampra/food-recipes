@@ -1,8 +1,8 @@
-import { AppLayout } from 'layouts';
+import { Header } from '@/Layouts/Partials/Header';
 import { UserData } from '@/types';
 import { Head, router, usePage } from '@inertiajs/react';
-import { Header } from '@/Layouts/Partials/Header';
 import { IconDotsVertical, IconLoader } from 'justd-icons';
+import { AppLayout } from 'layouts';
 import { useState } from 'react';
 import { SortDescriptor } from 'react-aria-components';
 import { Card, Container, Menu, Pagination, SearchField, Table } from 'ui';
