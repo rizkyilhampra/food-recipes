@@ -17,7 +17,6 @@ export function Footer() {
             >
               rizkyilhampra
             </Link>
-            , Inc. All rights reserved.
           </p>
         </div>
       </div>
