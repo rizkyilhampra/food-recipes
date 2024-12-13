@@ -214,6 +214,7 @@ const navItemStyles = tv({
 
 interface ItemProps extends LinkProps {
   isCurrent?: boolean;
+  prefetch?: boolean;
 }
 
 const Item = ({ className, isCurrent, ...props }: ItemProps) => {
