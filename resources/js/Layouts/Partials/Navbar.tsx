@@ -61,7 +61,7 @@ export function AppNavbar({ children, ...props }: React.ComponentProps<typeof Na
 
 function LoginButton() {
   return (
-    <Link href={route('login')} className={buttonStyles({ appearance: 'outline', size: 'small' })}>
+    <Link prefetch href={route('login')} className={buttonStyles({ appearance: 'outline', size: 'small' })}>
       Login
     </Link>
   );
