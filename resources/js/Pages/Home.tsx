@@ -1,5 +1,5 @@
 import { Header } from '@/Layouts/Partials/Header';
-import { UserPaginatedData } from '@/types';
+import { PaginatedData, UserData } from '@/types';
 import { Head, router, usePage } from '@inertiajs/react';
 import { IconDotsVertical, IconLoader } from 'justd-icons';
 import { AppLayout } from 'layouts';
@@ -8,7 +8,7 @@ import { SortDescriptor } from 'react-aria-components';
 import { Card, Container, Menu, Pagination, SearchField, Table } from 'ui';
 
 type PageProps = {
-  users: UserPaginatedData;
+  users: PaginatedData<UserData>;
   search: string;
   sort: string;
   order: 'ascending' | 'descending';

@@ -1,5 +1,5 @@
 import { useTheme } from '@/components/theme-provider';
-import { AuthData } from '@/types';
+import { PageProps } from '@/types';
 import { Link, usePage } from '@inertiajs/react';
 import { ThemeSwitcher } from 'components/theme-switcher';
 import { IconBrandLaravel } from 'justd-icons';
@@ -17,7 +17,7 @@ const navigations = [
 
 export function AppNavbar({ children, ...props }: React.ComponentProps<typeof Navbar>) {
   const page = usePage();
-  const { user } = usePage<AuthData>().props;
+  const { user } = usePage<PageProps>().props.auth;
   const [isOpen, setIsOpen] = React.useState(false);
   React.useEffect(() => setIsOpen(false), [page.url]);
 
@@ -61,14 +61,18 @@ export function AppNavbar({ children, ...props }: React.ComponentProps<typeof Na
 
 function LoginButton() {
   return (
-    <Link prefetch href={route('login')} className={buttonStyles({ appearance: 'outline', size: 'small' })}>
+    <Link
+      prefetch
+      href={route('login')}
+      className={buttonStyles({ appearance: 'outline', size: 'small' })}
+    >
       Login
     </Link>
   );
 }
 
 function UserMenu() {
-  const { user } = usePage<AuthData>().props;
+  const { user } = usePage<PageProps>().props.auth;
   const { theme, setTheme } = useTheme();
   const currentTheme = theme || 'system';
   const [selectedTheme, setSelectedTheme] = React.useState<Selection>(new Set([currentTheme]));

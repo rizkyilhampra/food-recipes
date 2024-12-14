@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-use App\Data\User\UserData;
+use App\Data\UserData;
 use App\Models\User;
 use App\Services\Avatar;
 
