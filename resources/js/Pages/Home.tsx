@@ -1,5 +1,5 @@
 import { Header } from '@/Layouts/Partials/Header';
-import { UserData } from '@/types';
+import { UserPaginatedData } from '@/types';
 import { Head, router, usePage } from '@inertiajs/react';
 import { IconDotsVertical, IconLoader } from 'justd-icons';
 import { AppLayout } from 'layouts';
@@ -7,27 +7,8 @@ import { useState } from 'react';
 import { SortDescriptor } from 'react-aria-components';
 import { Card, Container, Menu, Pagination, SearchField, Table } from 'ui';
 
-interface Links {
-  prev: string;
-  next: string;
-  first: string;
-  last: string;
-}
-
-interface Meta {
-  current_page: number;
-  last_page: number;
-  total: number;
-}
-
-interface UsersProps {
-  data: UserData[];
-  meta: Meta;
-  links: Links;
-}
-
 type PageProps = {
-  users: UsersProps;
+  users: UserPaginatedData;
   search: string;
   sort: string;
   order: 'ascending' | 'descending';
@@ -120,7 +101,7 @@ const Home = () => {
             <Pagination.Item variant="first" href={users.links.first} />
             <Pagination.Item
               variant="previous"
-              href={users.links.prev}
+              href={users.links.prev ?? undefined}
               isDisabled={users.meta.current_page === 1}
             />
             <Pagination.Section aria-label="Pagination Segment" className="rounded-lg border">
@@ -132,7 +113,7 @@ const Home = () => {
             </Pagination.Section>
             <Pagination.Item
               variant="next"
-              href={users.links.next}
+              href={users.links.next ?? undefined}
               isDisabled={users.meta.current_page === users.meta.last_page}
             />
             <Pagination.Item variant="last" href={users.links.last} />
