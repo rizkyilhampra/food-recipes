@@ -1,4 +1,4 @@
-import { Header } from '@/Layouts/Partials/Header';
+import { Header } from '@/components/Header';
 import { PaginatedData, UserData } from '@/types';
 import { Head, router, usePage } from '@inertiajs/react';
 import { IconDotsVertical, IconLoader } from 'justd-icons';
