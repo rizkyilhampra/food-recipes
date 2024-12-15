@@ -20,3 +20,4 @@ export * from './form';
 export * from './table';
 export * from './pagination';
 export * from './search-field';
+export * from './toast';
