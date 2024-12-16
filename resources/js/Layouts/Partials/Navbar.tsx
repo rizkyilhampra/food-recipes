@@ -12,6 +12,11 @@ const navigations = [
     name: 'Home',
     textValue: 'Home',
     href: '/'
+  },
+  {
+    name: 'Categories',
+    textValue: 'Categories',
+    href: '/categories',
   }
 ];
 

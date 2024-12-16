@@ -21,3 +21,6 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::delete('/logout', [AuthenticatedGoogleController::class, 'destroy'])
         ->name('logout');
 });
+
+
+Route::resource('categories', App\Http\Controllers\CategoryController::class);

@@ -1,65 +1,58 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Http\Controllers;
 
+use App\Actions\Category\CreateCategory;
+use App\Actions\Category\DeleteCategory;
+use App\Actions\Category\UpdateCategory;
+use App\Http\Requests\CategoryRequest;
+use App\Http\Resources\CategoryCollection;
 use App\Models\Category;
-use Illuminate\Http\Request;
 
-class CategoryController
+final class CategoryController
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
-        //
+        $categories = CategoryCollection::make((new Category())->paginate());
+
+        return inertia('Category/Index', compact('categories'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
-        //
+        return inertia('Category/Create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
+    public function store(CategoryRequest $request)
     {
-        //
+        (new CreateCategory($request->validated()))->execute();
+
+        return redirect()->route('categories.index');
     }
 
-    /**
-     * Display the specified resource.
-     */
     public function show(Category $category)
     {
-        //
+        return inertia('Category/Detail', compact('category'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
     public function edit(Category $category)
     {
-        //
+        return inertia('Category/Edit', compact('category'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, Category $category)
+    public function update(CategoryRequest $request, Category $category)
     {
-        //
+        (new UpdateCategory($category, $request->validated()))->execute();
+
+        return redirect()->route('categories.index');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(Category $category)
     {
-        //
+        (new DeleteCategory($category))->execute();
+
+        return redirect()->route('categories.index');
     }
 }
