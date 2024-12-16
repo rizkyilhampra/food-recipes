@@ -22,5 +22,4 @@ Route::middleware(['auth', 'verified'])->group(function () {
         ->name('logout');
 });
 
-
 Route::resource('categories', App\Http\Controllers\CategoryController::class);

@@ -1,11 +1,13 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Http\Controllers;
 
 use App\Models\Recipe;
 use Illuminate\Http\Request;
 
-class RecipeController
+final class RecipeController
 {
     /**
      * Display a listing of the resource.

@@ -24,16 +24,16 @@ final class Category extends Model
         'description',
     ];
 
+    public function getPaginated(int $perPage = 10): LengthAwarePaginator
+    {
+        return $this->query()->latest()->paginate($perPage);
+    }
+
     /**
      * Define an accessor for the "name" attribute.
      */
     protected function name(): Attribute
     {
         return Attribute::make(get: fn (string $value) => str()->apa($value));
-    }
-
-    public function getPaginated(int $perPage = 10): LengthAwarePaginator
-    {
-        return $this->query()->latest()->paginate($perPage);
     }
 }
