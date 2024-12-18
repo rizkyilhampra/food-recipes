@@ -15,7 +15,7 @@ final class CategoryController
 {
     public function index()
     {
-        $categories = CategoryCollection::make((new Category())->paginate());
+        $categories = CategoryCollection::make((new Category())->getPaginated());
 
         return inertia('Category/Index', compact('categories'));
     }
