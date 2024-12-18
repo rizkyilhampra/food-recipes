@@ -4,6 +4,7 @@ import './bootstrap';
 import { Ziggy } from '@/ziggy';
 import { createInertiaApp } from '@inertiajs/react';
 import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers';
+import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import { Config, useRoute } from '../../vendor/tightenco/ziggy/src/js';
 import { Providers } from './components/providers';
@@ -15,7 +16,9 @@ createInertiaApp({
     window.route = useRoute(Ziggy as Config);
     createRoot(el).render(
       <Providers>
-        <App {...props}></App>
+        <StrictMode>
+          <App {...props}></App>
+        </StrictMode>
       </Providers>
     );
   }
