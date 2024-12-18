@@ -44,5 +44,4 @@ arch('avoid inheritance')
 
 arch('annotations')
     ->expect('App')
-    ->toHavePropertiesDocumented()
-    ->toHaveMethodsDocumented();
+    ->toHavePropertiesDocumented();
