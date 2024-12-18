@@ -10,6 +10,7 @@ use App\Models\Category;
 final readonly class CreateCategory
 {
     public function __construct(
+        /** @var array<string, mixed> */
         private readonly array $data,
     ) {}
 

@@ -11,6 +11,7 @@ final readonly class UpdateCategory
 {
     public function __construct(
         private readonly Category $category,
+        /** @var array<string, mixed> */
         private readonly array $data,
     ) {}
 
