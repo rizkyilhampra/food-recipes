@@ -30,7 +30,7 @@ final class CategoryController
     {
         (new CreateCategory($request->validated()))->execute();
 
-        return redirect()->route('categories.index');
+        return to_route('categories.index');
     }
 
     public function show(Category $category): \Inertia\ResponseFactory|\Inertia\Response
@@ -47,13 +47,13 @@ final class CategoryController
     {
         (new UpdateCategory($category, $request->validated()))->execute();
 
-        return redirect()->route('categories.index');
+        return to_route('categories.index');
     }
 
     public function destroy(Category $category): RedirectResponse
     {
         (new DeleteCategory($category))->execute();
 
-        return redirect()->route('categories.index');
+        return to_route('categories.index');
     }
 }
