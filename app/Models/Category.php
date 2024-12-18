@@ -9,6 +9,10 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Pagination\LengthAwarePaginator;
 
+/**
+ * @property string $name
+ * @property string $description
+ */
 final class Category extends Model
 {
     /** @use HasFactory<\Database\Factories\CategoryFactory> */
