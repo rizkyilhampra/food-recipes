@@ -29,7 +29,7 @@ const Create = () => {
           <Card>
             <Card.Header>
               <Card.Title>Create a new category</Card.Title>
-              <Card.Description>Create a new category for your recipes.</Card.Description>
+              <Card.Description>Create a new category of your recipes.</Card.Description>
             </Card.Header>
             <Card.Content>
               <CategoryForm
