@@ -3,6 +3,11 @@ export type CategoryData = {
   name: string;
   description: string;
 };
+export type IngredientData = {
+  id: number;
+  name: string;
+  updated_at: string;
+};
 export type UserData = {
   id: number;
   name: string;

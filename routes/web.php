@@ -23,3 +23,4 @@ Route::middleware(['auth', 'verified'])->group(function () {
 });
 
 Route::resource('categories', App\Http\Controllers\CategoryController::class);
+Route::resource('ingredients', App\Http\Controllers\IngredientController::class);

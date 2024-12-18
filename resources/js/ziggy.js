@@ -34,6 +34,33 @@ const Ziggy = {
       methods: ['DELETE'],
       parameters: ['category'],
       bindings: { category: 'id' }
+    },
+    'ingredients.index': { uri: 'ingredients', methods: ['GET', 'HEAD'] },
+    'ingredients.create': { uri: 'ingredients\/create', methods: ['GET', 'HEAD'] },
+    'ingredients.store': { uri: 'ingredients', methods: ['POST'] },
+    'ingredients.show': {
+      uri: 'ingredients\/{ingredient}',
+      methods: ['GET', 'HEAD'],
+      parameters: ['ingredient'],
+      bindings: { ingredient: 'id' }
+    },
+    'ingredients.edit': {
+      uri: 'ingredients\/{ingredient}\/edit',
+      methods: ['GET', 'HEAD'],
+      parameters: ['ingredient'],
+      bindings: { ingredient: 'id' }
+    },
+    'ingredients.update': {
+      uri: 'ingredients\/{ingredient}',
+      methods: ['PUT', 'PATCH'],
+      parameters: ['ingredient'],
+      bindings: { ingredient: 'id' }
+    },
+    'ingredients.destroy': {
+      uri: 'ingredients\/{ingredient}',
+      methods: ['DELETE'],
+      parameters: ['ingredient'],
+      bindings: { ingredient: 'id' }
     }
   }
 };

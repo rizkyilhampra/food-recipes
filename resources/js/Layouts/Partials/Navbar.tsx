@@ -16,7 +16,12 @@ const navigations = [
   {
     name: 'Categories',
     textValue: 'Categories',
-    href: '/categories',
+    href: '/categories'
+  },
+  {
+    name: 'Ingredients',
+    textValue: 'Ingredients',
+    href: '/ingredients'
   }
 ];
 
@@ -39,7 +44,7 @@ export function AppNavbar({ children, ...props }: React.ComponentProps<typeof Na
             </Navbar.Item>
           ))}
         </Navbar.Section>
-        <Navbar.Section className="hidden ml-auto gap-x-1 lg:flex">
+        <Navbar.Section className="ml-auto hidden gap-x-1 lg:flex">
           {!user && <ThemeSwitcher />}
           {user ? <UserMenu /> : <LoginButton />}
         </Navbar.Section>
@@ -90,7 +95,7 @@ function UserMenu() {
         <Menu.Section>
           <Menu.Header separator className="relative">
             <div>{user.name}</div>
-            <div className="text-muted-fg font-normal text-sm whitespace-nowrap truncate pr-6">
+            <div className="truncate whitespace-nowrap pr-6 text-sm font-normal text-muted-fg">
               {user.email}
             </div>
           </Menu.Header>
