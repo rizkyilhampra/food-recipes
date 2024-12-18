@@ -63,7 +63,7 @@ it('can access edit page', function () {
     });
 });
 
-it('can see detail category', function() {
+it('can see detail category', function () {
     $category = Category::factory()->create();
 
     $response = get("/categories/{$category->id}");
@@ -92,7 +92,6 @@ it('can update a category', function () {
 
     assertDatabaseHas('categories', $data);
 });
-
 
 it('can delete a category', function () {
     $category = Category::factory()->create();
