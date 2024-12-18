@@ -1,6 +1,7 @@
+import CategoryForm from '@/components/Category/CategoryForm';
 import { Header } from '@/components/Header';
 import LinkBack from '@/components/LinkBack';
-import { Button, Card, Container, Form, TextField } from '@/components/ui';
+import { Card, Container } from '@/components/ui';
 import { AppLayout } from '@/Layouts';
 import { CategoryData } from '@/types';
 import { Head, useForm } from '@inertiajs/react';
@@ -11,9 +12,9 @@ const Edit = ({ category }: { category: CategoryData }) => {
     description: category.description
   });
 
-  const submit = (e: { preventDefault: () => void }) => {
+  const submit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    put(route('categories.update', category), {
+    put(route('categories.update', category.id), {
       preserveScroll: true
     });
   };
@@ -31,39 +32,13 @@ const Edit = ({ category }: { category: CategoryData }) => {
               <Card.Description>Edit the details of the category.</Card.Description>
             </Card.Header>
             <Card.Content>
-              <Form onSubmit={submit} className="space-y-6">
-                <TextField
-                  id="name"
-                  label="Name"
-                  type="text"
-                  value={data.name}
-                  placeholder="Name of the category"
-                  className="mt-1"
-                  onChange={(v) => setData('name', v)}
-                  isRequired
-                  errorMessage={errors.name}
-                  autoFocus
-                  autoComplete="name"
-                />
-                <TextField
-                  id="description"
-                  type="text"
-                  label="Description"
-                  value={data.description}
-                  placeholder="Short description of the category"
-                  className="mt-1"
-                  onChange={(v) => setData('description', v)}
-                  isRequired
-                  errorMessage={errors.description}
-                  autoComplete="email"
-                />
-
-                <div className="flex items-center gap-4">
-                  <Button type="submit" isDisabled={processing}>
-                    Save
-                  </Button>
-                </div>
-              </Form>
+              <CategoryForm
+                data={data}
+                setData={setData}
+                errors={errors}
+                processing={processing}
+                onSubmit={submit}
+              />
             </Card.Content>
           </Card>
         </div>
